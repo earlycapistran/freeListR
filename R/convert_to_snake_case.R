@@ -27,9 +27,9 @@
 
 convert_to_snake_case <- function(df) {
   # Function to convert a string to snake case
-  to_snake_case <- function(text) {
+  to_snake_case <- function(my_text) {
     # Split words by spaces
-    words <- strsplit(text, " ")[[1]]
+    words <- gsub(" ", "_", my_text)
     # Convert to lowercase
     words <- tolower(words)
     return(words)
@@ -48,6 +48,5 @@ convert_to_snake_case <- function(df) {
 
   # Convert the updated data back to a dataframe
   updated_df <- as.data.frame(df)
-
   return(updated_df)
 }

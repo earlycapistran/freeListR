@@ -17,11 +17,13 @@ columns.
 \description{
 This function replaces accented characters with their
 non-accented counterparts in all columns that contain
-strings of a dataframe. Contains accents and special
-characters common across European languages.
+strings of a dataframe. This function contains accents
+and special characters common across European languages.
+The function checks that the output does not contain
+non-ASCII characters.
 }
 \examples{
-# Example dataframe
+Example dataframe
 df <- data.frame(
   Name = c("Café", "Héllo", "Ëxample"),
   Age = c(25, 30, 35),

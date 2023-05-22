@@ -32,10 +32,6 @@ convert_to_snake_case <- function(df) {
     words <- strsplit(text, " ")[[1]]
     # Convert to lowercase
     words <- tolower(words)
-    # Remove consecutive underscores
-    words <- gsub("__+", "_", words)
-    # Trim leading and trailing underscores
-    words <- trimws(words, "both")
     return(words)
   }
 

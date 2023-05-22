@@ -51,7 +51,8 @@ replace_accented_characters <- function(df) {
   # Iterate over all columns
   for (col in names(df)) {
     if (is.character(df[[col]])) {
-      # Replace accented characters with non-accented characters in the current column
+      # Replace accented characters with non-accented
+      # characters in the current column
       df[[col]] <- sapply(df[[col]], function(text) {
         for (i in 1:length(accented_chars)) {
           text <- gsub(accented_chars[i],

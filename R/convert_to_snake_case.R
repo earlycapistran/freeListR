@@ -35,9 +35,8 @@ convert_to_snake_case <- function(df) {
   # Convert the updated data back to a dataframe
   updated_df <- as.data.frame(updated_df)
 
-  cat("Spaces replaced with underscores and converted to lowercase in dataframe successfully!\n")
+  cat("Spaces replaced with underscores and converted
+      to lowercase in dataframe successfully!\n")
 
   return(updated_df)
 }
-
-

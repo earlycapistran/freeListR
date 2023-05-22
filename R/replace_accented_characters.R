@@ -2,8 +2,10 @@
 #'
 #' This function replaces accented characters with their
 #' non-accented counterparts in all columns that contain
-#' strings of a dataframe. Contains accents and special
-#' characters common across European languages.
+#' strings of a dataframe. This function contains accents
+#' and special characters common across European languages.
+#' The function checks that the output does not contain
+#' non-ASCII characters.
 #'
 #' @param df The input dataframe.
 #'
@@ -12,7 +14,7 @@
 #' columns.
 #'
 #' @examples
-#' # Example dataframe
+#' Example dataframe
 #' df <- data.frame(
 #'   Name = c("Café", "Héllo", "Ëxample"),
 #'   Age = c(25, 30, 35),
@@ -62,6 +64,20 @@ replace_accented_characters <- function(df) {
         }
         return(text)
       })
+    }
+  }
+  # Check if the output contains non-ASCII characters
+  non_ascii_check <- function(text) {
+    if (grepl("[^[:ascii:]]", text, perl = TRUE)) {
+      stop("Non-ASCII characters detected in the output.")
+    }
+    return(text)
+  }
+
+  # Apply the non-ASCII check to all columns
+  for (col in names(df)) {
+    if (is.character(df[[col]])) {
+      df[[col]] <- sapply(df[[col]], non_ascii_check)
     }
   }
 
